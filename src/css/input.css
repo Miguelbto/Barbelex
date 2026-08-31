@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 1. Variáveis globais de layout (Medidas nativas CSS) */
+:root {
+  --header-height: 4rem; /* 64px */
+  --max-width-site: 1280px;
+}
+
+/* 2. Reset e estilos base integrados ao Tailwind */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Reseta o body aplicando o fundo escuro, fonte padrão e cor de seleção */
+  body {
+    @apply bg-dark text-slate-100 font-sans antialiased min-h-screen selection:bg-gold selection:text-dark;
+  }
+
+  /* Aplica automaticamente a fonte de destaque (Display) nos títulos */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-wide text-gold uppercase;
+  }
+}
+
+/* 3. Utilitários personalizados (opcional: barra de rolagem customizada) */
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-dark;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-dark-border rounded hover:bg-gold;
+  }
+}
